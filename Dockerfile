@@ -6,14 +6,6 @@ FROM ros:${ROS_DISTRO}-ros-base
 ARG TARGETPLATFORM TARGETARCH
 
 RUN echo "buildx says: $TARGETPLATFORM / $TARGETARCH"
-ARG ROS_DISTRO=humble
-
-# buildx 使用時は $TARGETPLATFORM が自動注入される
-FROM ros:${ROS_DISTRO}-ros-base
-
-ARG TARGETPLATFORM TARGETARCH
-
-RUN echo "buildx says: $TARGETPLATFORM / $TARGETARCH"
 
 # Install git, supervisor, VNC, & X11 packages
 RUN set -ex; \
