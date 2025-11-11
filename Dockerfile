@@ -6,6 +6,14 @@ FROM ros:${ROS_DISTRO}-ros-base
 ARG TARGETPLATFORM TARGETARCH
 
 RUN echo "buildx says: $TARGETPLATFORM / $TARGETARCH"
+ARG ROS_DISTRO=humble
+
+# buildx 使用時は $TARGETPLATFORM が自動注入される
+FROM ros:${ROS_DISTRO}-ros-base
+
+ARG TARGETPLATFORM TARGETARCH
+
+RUN echo "buildx says: $TARGETPLATFORM / $TARGETARCH"
 
 # Install git, supervisor, VNC, & X11 packages
 RUN set -ex; \
@@ -33,8 +41,10 @@ ENV HOME=/root \
     RUN_XTERM=yes \
     RUN_FLUXBOX=yes
 
+
 COPY . /app
 
+#setup desktop environment
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
       ros-${ROS_DISTRO}-desktop && \

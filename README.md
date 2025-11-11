@@ -1,7 +1,5 @@
 # noVNC Display Container
-```
-```
-This image is intended to be used for displaying X11 applications from other containers in a browser. A stand-alone demo as well as a [Version 2](https://docs.docker.com/compose/compose-file/#version-2) composition.
+This image is intended to be used for displaying X11 applications from other containers in a browser with ROS2 develop enviroment.  
 
 ## Image Contents
 
@@ -22,10 +20,14 @@ You can specify the following variables:
 * `RUN_XTERM={yes|no}` (yes)
 * `RUN_FLUXBOX={yes|no}` (yes)
 
+## build
+
+You can build this image just running `build.sh` script.
+
 ### Stand-alone Demo
 Run:
 ```bash
-$ docker run --rm -it -p 8080:8080 theasp/novnc
+$ docker run --rm -it -p 8080:8080 novnc-ros2
 ```
 Open a browser and see the `xterm` demo at `http://<server>:8080/vnc.html`
 
